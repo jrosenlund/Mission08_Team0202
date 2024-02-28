@@ -20,7 +20,14 @@ public partial class TaskContext : DbContext
     public virtual DbSet<Task> Tasks { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlite("Data Source=Task.sqlite");
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            // The warning directive can be removed as we are no longer hardcoding the connection string
+            optionsBuilder.UseSqlite("Name=TaskConnection");
+        }
+    }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
