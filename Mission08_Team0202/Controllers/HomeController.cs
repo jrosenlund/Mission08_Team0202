@@ -15,6 +15,7 @@ namespace Mission08_Team0202.Controllers
 
         public IActionResult Index()
         {
+            // Get task list, pass to view
             var tasks = _repo.Tasks.Where(x => x.Completed == 0).ToList();
 
             return View(tasks);
@@ -26,16 +27,30 @@ namespace Mission08_Team0202.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Add()
-        //{
-        //    return View();
-        //}
+        [HttpPost]
+        public IActionResult Add(Task t)
+        {
+            // Check if new record lines up with the model
+            if (ModelState.IsValid)
+            {
+                // Call _repo method (found in EFTaskRepository.cs)
+                _repo.AddTask(t);
+            }
+
+            // Get task list to reload home page
+            var tasks = _repo.Tasks.Where(x => x.Completed == 0).ToList();
+
+            return View("Index", tasks);
+        }
 
         [HttpGet]
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View();
+            // Grab a single task based on task id
+            var taskToEdit = _repo.Tasks
+                .Single(x => x.TaskId == id);
+
+            return View(taskToEdit);
         }
 
         //[HttpPost]
