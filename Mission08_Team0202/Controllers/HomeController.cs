@@ -78,6 +78,25 @@ namespace Mission08_Team0202.Controllers
             return RedirectToAction("Index", tasks);
         }
 
+        [HttpPost]
+        public IActionResult MarkComplete(int id)
+        {
+            // Grab task
+            var taskToEdit = _repo.Tasks
+                .Single(x => x.TaskId == id);
+
+            // Set completed to true
+            taskToEdit.Completed = true;
+
+            // Pass task to edit method
+            _repo.EditTask(taskToEdit);
+
+            // Grab remaining tasks from database
+            var tasks = _repo.Tasks.Where(x => x.Completed == false).ToList();
+
+            return RedirectToAction("Index", tasks);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
