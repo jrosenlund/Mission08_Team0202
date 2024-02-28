@@ -17,7 +17,7 @@ namespace Mission08_Team0202.Controllers
         public IActionResult Index()
         {
             // Get task list, pass to view
-            var tasks = _repo.Tasks.Where(x => x.Completed == 0).ToList();
+            var tasks = _repo.Tasks.Where(x => x.Completed == false).ToList();
 
             return View(tasks);
         }
@@ -39,7 +39,7 @@ namespace Mission08_Team0202.Controllers
             }
 
             // Get task list to reload home page
-            var tasks = _repo.Tasks.Where(x => x.Completed == 0).ToList();
+            var tasks = _repo.Tasks.Where(x => x.Completed == false).ToList();
 
             return View("Index", tasks);
         }
@@ -72,7 +72,7 @@ namespace Mission08_Team0202.Controllers
             }
 
             // Grab remaining tasks from database
-            var tasks = _repo.Tasks.Where(x => x.Completed == 0).ToList();
+            var tasks = _repo.Tasks.Where(x => x.Completed == false).ToList();
 
             // Send back to home with tasks included
             return RedirectToAction("Index", tasks);
