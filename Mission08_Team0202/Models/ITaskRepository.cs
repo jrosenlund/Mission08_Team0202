@@ -5,7 +5,7 @@
         List<Task> Tasks { get; }
 
         public void AddTask(Task task);
-        void EditTask(Task task);
-        void DeleteTask(int taskId);
+        public void EditTask(Task task);
+        public void DeleteTask(int taskId);
     }
 }
