@@ -28,6 +28,7 @@ public partial class TaskContext : DbContext
         }
     }
 
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Category>(entity =>

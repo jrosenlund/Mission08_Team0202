@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mission08_Team0202.Models;
 using System.Diagnostics;
+using TaskModel = Mission08_Team0202.Models.Task;
+
 
 namespace Mission08_Team0202.Controllers
 {
@@ -28,7 +30,7 @@ namespace Mission08_Team0202.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Task t)
+        public IActionResult Add(TaskModel t)
         {
             // Check if new record lines up with the model
             if (ModelState.IsValid)
