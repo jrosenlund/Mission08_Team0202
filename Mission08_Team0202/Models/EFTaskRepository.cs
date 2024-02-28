@@ -20,7 +20,7 @@ namespace Mission08_Team0202.Models
         }
         public void EditTask(Task task)
         {
-            _context.Entry(task).State = EntityState.Modified;
+            _context.Update(task); 
             _context.SaveChanges();
         }
 
