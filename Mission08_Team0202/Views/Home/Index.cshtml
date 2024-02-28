@@ -1,10 +1,96 @@
 ﻿@{
     ViewData["Title"] = "Task Manager";
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Time Management Matrix</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+      
+        .matrix-section {
+            border: 1px solid #000;
+            padding: 20px;
+            margin-bottom: 8px; /* Bootstrap handles most of the spacing */
+        }
 
-<div class="text-center">
-    <h1 class="display-4">Quadrant View</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+        .important {
+            background-color: #FFFFA8; /* Light yellow */
+        }
 
+        .urgent, .not-urgent {
+            border-color: transparent; /* Adjust based on your design */
+        }
 
+        .quadrant {
+            min-height: 150px; /* Adjust height as needed */
+        }
+
+        .quadrant-header {
+            font-weight: bold;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        h4 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h2>Stephen Covey's Time Management Matrix</h2>
+    <br />
+    <div class="container">
+        <!-- Bootstrap container -->
+        <div class="row">
+            <!-- Bootstrap row -->
+            <!-- Quadrant 1 -->
+            <div class="col-md-6">
+                <!-- Bootstrap column -->
+                <h4>Urgent</h4>
+                <div class="matrix-section important urgent">
+                    <div class="quadrant-header">Quadrant 1</div>
+                    <div class="quadrant">Crises<br>Pressing Problems<br>Projects with Deadlines</div>
+                </div>
+            </div>
+            <!-- Quadrant 2 -->
+            <div class="col-md-6">
+                <!-- Bootstrap column -->
+                <h4>Not Urgent</h4>
+                <div class="matrix-section important not-urgent">
+                    <div class="quadrant-header">Quadrant 2</div>
+                    <div class="quadrant">Relationship Building<br>Planning<br>Recreation</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- New row for the next two quadrants -->
+            <!-- Quadrant 3 -->
+            <div class="col-md-6">
+                <!-- Bootstrap column -->
+                <h4>Important</h4>
+                <div class="matrix-section not-important urgent">
+                    <div class="quadrant-header">Quadrant 3</div>
+                    <div class="quadrant">Interruptions<br>Some Phone Calls<br>Some Mail<br>Some Reports</div>
+                </div>
+            </div>
+            <!-- Quadrant 4 -->
+            <div class="col-md-6">
+                <!-- Bootstrap column -->
+                <h4>Not Important</h4>
+                <div class="matrix-section not-important not-urgent">
+                    <div class="quadrant-header">Quadrant 4</div>
+                    <div class="quadrant">Busy Work<br>Some Phone Calls<br>Some Mail<br>Time Wasters</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

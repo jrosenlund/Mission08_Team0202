@@ -6,22 +6,42 @@ namespace Mission08_Team0202.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private ITaskRepository _repo; // Database "Instance"
+        public HomeController(ITaskRepository temp) // Constructor
         {
-            _logger = logger;
+            _repo = temp;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var tasks = _repo.Tasks.Where(x => x.Completed == 0).ToList();
+
+            return View(tasks);
         }
 
-        public IActionResult Privacy()
+        [HttpGet]
+        public IActionResult Add()
         {
             return View();
         }
+
+        //[HttpPost]
+        //public IActionResult Add()
+        //{
+        //    return View();
+        //}
+
+        [HttpGet]
+        public IActionResult Edit()
+        {
+            return View();
+        }
+
+        //[HttpPost]
+        //public IActionResult Edit()
+        //{
+        //    return View();
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
