@@ -67,8 +67,8 @@ namespace Mission08_Team0202.Controllers
             var taskToDelete = _repo.Tasks.FirstOrDefault(t => t.TaskId == id);
             if (taskToDelete != null)
             {
-                // Remove target record
-                _repo.Tasks.Remove(taskToDelete);
+                // Remove target record based on id
+                _repo.DeleteTask(taskToDelete.TaskId);
             }
 
             // Grab remaining tasks from database

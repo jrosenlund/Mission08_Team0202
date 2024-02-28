@@ -15,7 +15,7 @@ public partial class Task
 
     public int? CategoryId { get; set; }
 
-    public int? Completed { get; set; }
+    public bool? Completed { get; set; }
 
     // Navigation property to Category
     public virtual Category? Category { get; set; }
