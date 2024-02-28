@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+
 namespace Mission08_Team0202.Models
 {
     public class EFTaskRepository : ITaskRepository
@@ -18,6 +19,21 @@ namespace Mission08_Team0202.Models
         {
             _context.Add(task);
             _context.SaveChanges();
+        }
+        public void EditTask(Task task)
+        {
+            _context.Update(task); 
+            _context.SaveChanges();
+        }
+
+        public void DeleteTask(int taskId)
+        {
+            var task = _context.Tasks.Find(taskId);
+            if (task != null)
+            {
+                _context.Tasks.Remove(task);
+                _context.SaveChanges();
+            }
         }
     }
 }
