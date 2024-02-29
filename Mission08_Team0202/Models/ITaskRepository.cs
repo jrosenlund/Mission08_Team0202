@@ -2,10 +2,11 @@
 {
     public interface ITaskRepository
     {
-        List<Task> Tasks { get; }
+        List<Tasks> Tasks { get; }
+        List<Categories> Categories { get; }
 
-        public void AddTask(Task task);
-        public void EditTask(Task task);
+        public void AddTask(Tasks task);
+        public void EditTask(Tasks task);
         public void DeleteTask(int taskId);
     }
 }
