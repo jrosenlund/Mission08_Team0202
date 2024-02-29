@@ -1,4 +1,4 @@
-﻿@using TaskModel = Mission08_Team0202.Models.Task
+﻿@using TaskModel = Mission08_Team0202.Models.Tasks
 @model List<TaskModel>
 
 
@@ -66,7 +66,7 @@
                         {
                             <div class="p-2 mb-2 border bg-light">
                                 <p>
-                                    @task.Category?.Category1 - @task.Task1 &amp; Due: @task.DueDate
+                                    @task.Category?.Category - @task.Task &amp; Due: @task.DueDate
                                     <br />
                                     <small style="font-size: smaller;">
                                         <a asp-action="Edit" asp-route-id="@task.TaskId">Edit</a> |
@@ -95,7 +95,7 @@
                         {
                             <div class="p-2 mb-2 border bg-light">
                                 <p>
-                                    @task.Category?.Category1 - @task.Task1 &amp; Due: @task.DueDate
+                                    @task.Category?.Category - @task.Task &amp; Due: @task.DueDate
                                     <br />
                                     <small style="font-size: smaller;">
                                         <a asp-action="Edit" asp-route-id="@task.TaskId">Edit</a> |
@@ -127,7 +127,7 @@
                         {
                             <div class="p-2 mb-2 border bg-light">
                                 <p>
-                                    @task.Category?.Category1 - @task.Task1 &amp; Due: @task.DueDate
+                                    @task.Category?.Category - @task.Task &amp; Due: @task.DueDate
                                     <br />
                                     <small style="font-size: smaller;">
                                         <a asp-action="Edit" asp-route-id="@task.TaskId">Edit</a> |
@@ -157,7 +157,7 @@
                         {
                             <div class="p-2 mb-2 border bg-light">
                                 <p>
-                                    @task.Category?.Category1 - @task.Task1 &amp; Due: @task.DueDate
+                                    @task.Category?.Category - @task.Task &amp; Due: @task.DueDate
                                     <br />
                                     <small style="font-size: smaller;">
                                         <a asp-action="Edit" asp-route-id="@task.TaskId">Edit</a> |
