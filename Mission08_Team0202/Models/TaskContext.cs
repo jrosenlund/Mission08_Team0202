@@ -38,7 +38,7 @@ public partial class TaskContext : DbContext
 
         modelBuilder.Entity<Tasks>(entity =>
         {
-            entity.Property(e => e.TaskId).ValueGeneratedNever();
+            entity.Property(e => e.TaskId).ValueGeneratedOnAdd();
             entity.Property(e => e.Task).HasColumnName("Task");
         });
 
