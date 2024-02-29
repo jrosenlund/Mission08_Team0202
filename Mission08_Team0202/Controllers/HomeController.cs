@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mission08_Team0202.Models;
 using System.Diagnostics;
-using TaskModel = Mission08_Team0202.Models.Task;
+using TaskModel = Mission08_Team0202.Models.Tasks;
 
 namespace Mission08_Team0202.Controllers
 {
@@ -25,6 +25,10 @@ namespace Mission08_Team0202.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.Category)
+                .ToList();
+
             return View();
         }
 
@@ -50,6 +54,10 @@ namespace Mission08_Team0202.Controllers
             // Grab a single task based on task id
             var taskToEdit = _repo.Tasks
                 .Single(x => x.TaskId == id);
+
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.Category)
+                .ToList();
 
             return View(taskToEdit);
         }
