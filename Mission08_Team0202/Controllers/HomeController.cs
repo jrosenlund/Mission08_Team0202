@@ -25,6 +25,10 @@ namespace Mission08_Team0202.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
+
             return View();
         }
 
@@ -50,6 +54,10 @@ namespace Mission08_Team0202.Controllers
             // Grab a single task based on task id
             var taskToEdit = _repo.Tasks
                 .Single(x => x.TaskId == id);
+
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.CategoryName)
+                .ToList();
 
             return View(taskToEdit);
         }
