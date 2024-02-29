@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Mission08_Team0202.Models;
 using System.Diagnostics;
@@ -25,9 +26,14 @@ namespace Mission08_Team0202.Controllers
         [HttpGet]
         public IActionResult Add()
         {
-            ViewBag.Categories = _repo.Categories
-                .OrderBy(x => x.Category)
-                .ToList();
+            var categories = _repo.Categories.Select(c => new SelectListItem
+            {
+                Value = c.CategoryId.ToString(),
+                Text = c.Category
+            }
+            ).ToList();
+
+            ViewBag.Categories = categories;
 
             return View();
         }
