@@ -9,6 +9,6 @@ public partial class Categories
 
     public string Category { get; set; } = null!;
 
-    // Navigation property back to Tasks
-    public virtual ICollection<Task> Tasks { get; set; } = new List<Task>();
+    // Navigation property back to Task
+    public virtual ICollection<Tasks> Tasks { get; set; } = new List<Tasks>();
 }

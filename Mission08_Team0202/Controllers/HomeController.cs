@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mission08_Team0202.Models;
 using System.Diagnostics;
-using TaskModel = Mission08_Team0202.Models.Task;
+using TaskModel = Mission08_Team0202.Models.Tasks;
 
 namespace Mission08_Team0202.Controllers
 {
