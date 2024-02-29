@@ -11,7 +11,7 @@ namespace Mission08_Team0202.Models
             _context = temp;
         }
 
-        public List<Tasks> Tasks => _context.Task
+        public List<Tasks> Tasks => _context.Tasks
                                  .Include(t => t.Category) // Include Categories data
                                  .ToList();
 
@@ -29,10 +29,10 @@ namespace Mission08_Team0202.Models
 
         public void DeleteTask(int taskId)
         {
-            var task = _context.Task.Find(taskId);
+            var task = _context.Tasks.Find(taskId);
             if (task != null)
             {
-                _context.Task.Remove(task);
+                _context.Tasks.Remove(task);
                 _context.SaveChanges();
             }
         }
