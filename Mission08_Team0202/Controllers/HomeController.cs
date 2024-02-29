@@ -26,7 +26,7 @@ namespace Mission08_Team0202.Controllers
         public IActionResult Add()
         {
             ViewBag.Categories = _repo.Categories
-                .OrderBy(x => x.CategoryName)
+                .OrderBy(x => x.Category)
                 .ToList();
 
             return View();
@@ -56,7 +56,7 @@ namespace Mission08_Team0202.Controllers
                 .Single(x => x.TaskId == id);
 
             ViewBag.Categories = _repo.Categories
-                .OrderBy(x => x.CategoryName)
+                .OrderBy(x => x.Category)
                 .ToList();
 
             return View(taskToEdit);
