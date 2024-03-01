@@ -11,16 +11,17 @@ namespace Mission08_Team0202.Models
             _context = temp;
         }
 
-        public List<Task> Tasks => _context.Tasks
-                                 .Include(t => t.Category) // Include Category data
+        public List<Tasks> Tasks => _context.Tasks
+                                 .Include(t => t.Category) // Include Categories data
                                  .ToList();
 
-        public void AddTask(Task task)
+        public List<Categories> Categories => _context.Categories.ToList();
+        public void AddTask(Tasks task)
         {
             _context.Add(task);
             _context.SaveChanges();
         }
-        public void EditTask(Task task)
+        public void EditTask(Tasks task)
         {
             _context.Update(task); 
             _context.SaveChanges();

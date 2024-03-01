@@ -15,9 +15,9 @@ public partial class TaskContext : DbContext
     {
     }
 
-    public virtual DbSet<Category> Categories { get; set; }
+    public virtual DbSet<Categories> Categories { get; set; }
 
-    public virtual DbSet<Task> Tasks { get; set; }
+    public virtual DbSet<Tasks> Tasks { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -31,15 +31,15 @@ public partial class TaskContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Category>(entity =>
+        modelBuilder.Entity<Categories>(entity =>
         {
-            entity.Property(e => e.Category1).HasColumnName("Category");
+            entity.Property(e => e.Category).HasColumnName("Category");
         });
 
-        modelBuilder.Entity<Task>(entity =>
+        modelBuilder.Entity<Tasks>(entity =>
         {
-            entity.Property(e => e.TaskId).ValueGeneratedNever();
-            entity.Property(e => e.Task1).HasColumnName("Task");
+            entity.Property(e => e.TaskId).ValueGeneratedOnAdd();
+            entity.Property(e => e.Task).HasColumnName("Task");
         });
 
         OnModelCreatingPartial(modelBuilder);

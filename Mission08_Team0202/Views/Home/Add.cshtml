@@ -1,4 +1,4 @@
-﻿@using TaskModel = Mission08_Team0202.Models.Task;
+﻿@using TaskModel = Mission08_Team0202.Models.Tasks;
 @model TaskModel
 
 @{
@@ -13,10 +13,10 @@
     <h1>@ViewData["Title"]</h1>
     <h2>Create Task</h2>
 
-    <form asp-action="AddTask" method="post">
+    <form asp-action="Add" method="post">
         <div class="form-group">
-            <label asp-for="Task1">Task</label>
-            <input asp-for="Task1" class="form-control" required />
+            <label asp-for="Task">Task</label>
+            <input asp-for="Task" class="form-control" required />
         </div>
 
         <div class="form-group">
