@@ -57,22 +57,55 @@ namespace Mission08_Team0202.Controllers
         [HttpGet]
         public IActionResult Edit(int id)
         {
-            // Grab a single task based on task id
-            var taskToEdit = _repo.Tasks
-                .Single(x => x.TaskId == id);
+            // Find the task by ID
+            var taskToEdit = _repo.Tasks.FirstOrDefault(x => x.TaskId == id);
+            if (taskToEdit == null)
+            {
+                // Handle the case where the task is not found
+                return NotFound();
+            }
 
+            // Convert categories to SelectListItems for the ViewBag
             ViewBag.Categories = _repo.Categories
                 .OrderBy(x => x.Category)
+                .Select(c => new SelectListItem
+                {
+                    Value = c.CategoryId.ToString(),
+                    Text = c.Category
+                })
                 .ToList();
 
+            // Return the Edit view with the task to edit
             return View(taskToEdit);
         }
 
-        //[HttpPost]
-        //public IActionResult Edit()
-        //{
-        //    return View();
-        //}
+        // POST: Home/Edit/5
+        [HttpPost]
+        public IActionResult Edit(TaskModel taskToUpdate)
+        {
+            // Check if the model state is valid
+            if (ModelState.IsValid)
+            {
+                // Update the task using the repository
+                _repo.EditTask(taskToUpdate);
+
+                // Redirect to the Index action to show the updated task list
+                return RedirectToAction(nameof(Index));
+            }
+
+            // If the model state is not valid, re-populate the categories and return the same view
+            ViewBag.Categories = _repo.Categories
+                .OrderBy(x => x.Category)
+                .Select(c => new SelectListItem
+                {
+                    Value = c.CategoryId.ToString(),
+                    Text = c.Category
+                })
+                .ToList();
+
+            // Return the view with the task to edit
+            return View(taskToUpdate);
+        }
 
         [HttpPost]
         public IActionResult Delete(int id)
