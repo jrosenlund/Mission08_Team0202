@@ -8,6 +8,7 @@ namespace Mission08_Team0202.Models;
 public partial class Tasks
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int TaskId { get; set; }
 
     public string Task { get; set; } = null!;
